@@ -121,7 +121,7 @@ const Shop = () => {
     return (
         <div className="m-2">
             <div class="row">
-                <div class="col-6 col-md-4">
+                <div class="col-12 col-md-4">
                     <div className="col-12">
                         <Cart cart={cart} >
                             <Link to={{
@@ -133,7 +133,7 @@ const Shop = () => {
                         </Cart>
                     </div>
                 </div>
-                <div class="col-6 col-md-8">
+                <div class="col-12 col-md-8">
                     <div className="m-2">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

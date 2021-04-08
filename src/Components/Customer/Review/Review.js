@@ -97,14 +97,14 @@ const Review = () => {
                 :
                 <div className="m-2">
                     <div class="row">
-                        <div class="col-6 col-md-3">
+                        <div class="col-12 col-md-3">
                             <div className="col-11">
                                 <Cart cart={cart}>
                                     <button className="cart-btn" onClick={orderPlaceHandle}>Place Order</button>
                                 </Cart>
                             </div>
                         </div>
-                        <div class="col-6 col-md-9 ">
+                        <div class="col-12 col-md-9 ">
                             <div className="pl-4">
                                 <h3 className="ml-4">Products in Cart:</h3>
                                 <div >

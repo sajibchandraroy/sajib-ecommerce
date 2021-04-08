@@ -54,13 +54,14 @@ const Home = () => {
                         <div className="d-flex flex-wrap">
                             {allProducts.map(item =>
                                 <div className="col-12 col-md-3" >
-
                                     <div className="card border-info mb-3" >
                                         <div className="card-header text-center">
                                             <img src={`data:image/png;base64,${item.image.img}`} className="rounded mx-auto d-block" alt="..." style={{ width: '60%', height: '60%' }} />
                                         </div>
                                         <div className="card-body text-black text-center">
-                                            <Link to={"/product/" + item.key}><h4 ><b>Name: </b> {item.name} </h4></Link>
+                                            {/* <Link to={"/product/" + item.key}> */}
+                                                <h4 ><b>Name: </b> {item.name} </h4>
+                                                {/* </Link> */}
                                             <p><b>Brand: </b>{item.brand}<br></br>Price: ${item.price}</p>
                                             {/* <p className="card-text ">Price: ${item.price}</p> */}
                                         </div>
