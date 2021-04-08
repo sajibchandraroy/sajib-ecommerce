@@ -38,7 +38,7 @@ const Shop = () => {
 
     useEffect(() => {
         setCategoryProduct(allProducts)
-        // fetch('http://localhost:5000/products')
+        // fetch('https://guarded-bastion-31565.herokuapp.com/products')
         //     .then(res => res.json())
         //     .then(data => {
         //         setProducts(data)
@@ -51,7 +51,7 @@ const Shop = () => {
         const productKeys = Object.keys(getSavedItem);
         // const itc = getSavedItem[pd.key]
         // console.log(productKeys);
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://guarded-bastion-31565.herokuapp.com/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

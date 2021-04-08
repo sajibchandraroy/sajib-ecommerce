@@ -13,7 +13,7 @@ const OrdersList = ({ isAdmin }) => {
    
 
     useEffect(() => {
-        fetch('http://localhost:5000/orders?email=' + loggedInUser.email, {
+        fetch('https://guarded-bastion-31565.herokuapp.com/orders?email=' + loggedInUser.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const OrdersList = ({ isAdmin }) => {
     }, [isUpdated]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://guarded-bastion-31565.herokuapp.com/products')
         .then(res => res.json())
         .then(data => {
             setAllProducts(data)                

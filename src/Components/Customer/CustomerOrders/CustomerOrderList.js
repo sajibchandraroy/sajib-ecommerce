@@ -9,7 +9,7 @@ const CustomerOrderList = () => {
     const [allProducts, setAllProducts] = products;
 
     useEffect(() => {
-        fetch('http://localhost:5000/customerOrders?email=' + loggedInUser.email, {
+        fetch('https://guarded-bastion-31565.herokuapp.com/customerOrders?email=' + loggedInUser.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const CustomerOrderList = () => {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://guarded-bastion-31565.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setAllProducts(data)

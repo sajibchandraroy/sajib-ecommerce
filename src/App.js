@@ -40,7 +40,7 @@ function App() {
             console.log("local true")
         }
 
-        fetch('http://localhost:5000/products')
+        fetch('https://guarded-bastion-31565.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setAllProducts(data)

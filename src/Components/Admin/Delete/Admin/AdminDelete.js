@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 const AdminDelete = () => {
     const [allAdmin, setAllAdmin] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/admin')
+        fetch('https://guarded-bastion-31565.herokuapp.com/admin')
             .then(res => res.json())
             .then(data => {
                 setAllAdmin(data)
@@ -14,7 +14,7 @@ const AdminDelete = () => {
 
     const handleDelete = (id, e) => {        
         
-        fetch(`http://localhost:5000/admindelete/${id}`, {
+        fetch(`https://guarded-bastion-31565.herokuapp.com/admindelete/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

@@ -16,7 +16,7 @@ const Review = () => {
     useEffect(() => {
         const getSavedItem = getDatabaseCart();        
         const productKeys = Object.keys(getSavedItem);       
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://guarded-bastion-31565.herokuapp.com/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

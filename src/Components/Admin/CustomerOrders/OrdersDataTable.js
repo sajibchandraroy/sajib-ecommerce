@@ -15,7 +15,7 @@ const OrdersDataTable = (props) => {
         const updatedOrder = { id, status };
         console.log(id)
 
-        fetch(`http://localhost:5000/updateOrder/${id}`, {
+        fetch(`https://guarded-bastion-31565.herokuapp.com/updateOrder/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedOrder)

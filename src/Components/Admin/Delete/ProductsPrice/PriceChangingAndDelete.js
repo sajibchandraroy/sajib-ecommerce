@@ -12,7 +12,7 @@ const PriceChangingAndDelete = () => {
     // const [isUpdated, setIsUpdated] = useState([Math.random()]);
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/products')
+    //     fetch('https://guarded-bastion-31565.herokuapp.com/products')
     //         .then(res => res.json())
     //         .then(data => {
     //             setAllProducts(data)
@@ -23,7 +23,7 @@ const PriceChangingAndDelete = () => {
     console.log(allProducts)
     const handleDelete = (product, e) => {
         const id = product._id
-        fetch(`http://localhost:5000/deleteproduct/${id}`, {
+        fetch(`https://guarded-bastion-31565.herokuapp.com/deleteproduct/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

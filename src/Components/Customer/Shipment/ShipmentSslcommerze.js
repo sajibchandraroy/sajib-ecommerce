@@ -30,7 +30,7 @@ const ShipmentSslcommerze = () => {
 
         console.log(orderDetails);
 
-        fetch('http://localhost:5000/pay', {
+        fetch('https://guarded-bastion-31565.herokuapp.com/pay', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

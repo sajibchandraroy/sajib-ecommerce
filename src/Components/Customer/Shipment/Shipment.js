@@ -34,7 +34,7 @@ const Shipment = () => {
             status: 'Pending'
         };
         
-        fetch('http://localhost:5000/addOrders', {
+        fetch('https://guarded-bastion-31565.herokuapp.com/addOrders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

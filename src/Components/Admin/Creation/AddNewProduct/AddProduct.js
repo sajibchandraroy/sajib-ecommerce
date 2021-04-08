@@ -28,7 +28,7 @@ const AddProduct = () => {
         formData.append('key', data.key);
         formData.append('description', data.description);      
 
-        fetch('http://localhost:5000/addProducts', {
+        fetch('https://guarded-bastion-31565.herokuapp.com/addProducts', {
             method: 'POST',
             body: formData
         })

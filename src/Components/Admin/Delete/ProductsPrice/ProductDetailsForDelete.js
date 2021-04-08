@@ -27,7 +27,7 @@ const ProductDetailsForDelete = (props) => {
         const newPrice = info.price
         const updatedData = { id, newPrice };        
 
-        fetch(`http://localhost:5000/update/${id}`, {
+        fetch(`https://guarded-bastion-31565.herokuapp.com/update/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedData)

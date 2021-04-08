@@ -38,7 +38,7 @@ const Home = () => {
         <div className="container-fluid">
             <div class="banner mx-4">
                 <div className="row">
-                    <div className="col-3 mt-2">
+                    <div className="col-12 col-md-3 mt-2">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Categories of Products
@@ -50,19 +50,20 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-9 mt-2">
-                        <div className="col-4" >
+                    <div className="col-12 col-md-9 mt-2">
+                        <div className="d-flex flex-wrap">
                             {allProducts.map(item =>
-                                <div className="card border-info mb-3" >
-                                    <div className="card-header text-center">
-                                        <img src={`data:image/png;base64,${item.image.img}`} className="rounded mx-auto d-block" alt="..." style={{ width: '60%', height: '60%' }} />
-                                    </div>
-                                    <div className="card-body text-black text-center">
-                                        {/* <Link to={"/product/" + item.key}> */}
-                                            <h4 ><b>Name: </b> {item.name} </h4>
-                                            {/* </Link> */}
-                                        <p><b>Brand: </b>{item.brand}<br></br>Price: ${item.price}</p>
-                                        {/* <p className="card-text ">Price: ${item.price}</p> */}
+                                <div className="col-12 col-md-3" >
+
+                                    <div className="card border-info mb-3" >
+                                        <div className="card-header text-center">
+                                            <img src={`data:image/png;base64,${item.image.img}`} className="rounded mx-auto d-block" alt="..." style={{ width: '60%', height: '60%' }} />
+                                        </div>
+                                        <div className="card-body text-black text-center">
+                                            <Link to={"/product/" + item.key}><h4 ><b>Name: </b> {item.name} </h4></Link>
+                                            <p><b>Brand: </b>{item.brand}<br></br>Price: ${item.price}</p>
+                                            {/* <p className="card-text ">Price: ${item.price}</p> */}
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -86,10 +87,10 @@ const Home = () => {
                 <h1 className="mx-3 text-dark" style={{ color: 'black' }}>Why you choose us</h1>
             </div>
             <div className="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <WhyChoose />
                 </div>
-                <div class="col-6" style={{ fontWeight: "bold" }}>
+                <div class="col-12 col-md-6" style={{ fontWeight: "bold" }}>
                     <img src={image} alt="" style={{ width: '90%', height: 'auto', borderRadius: '70%' }} />
                     <ul>
                         <li>Available of products: 9000 items</li>
