@@ -1,5 +1,5 @@
 import './App.css';
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,8 +11,11 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Navbar from './Components/Shared/Navbar/Navbar';
 import Home from './Components/Home/Home';
 import Footer from './Components/Shared/Footer/Footer';
-import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import sslCommerzePayment from './Components/Customer/ProcessPayment/sslCommerzePayment';
+import Success from './Components/Customer/Shipment/Success';
+import NavBarDashboard from './Components/Dashboard/NavBarDashboard';
+import LoginDashboard from './Components/Login/LoginDashboard';
 
 export const GroceryContext = createContext();
 
@@ -22,18 +25,44 @@ function App() {
     const [cart, setCart] = useState([]);
     const [grandTotal, setGrandTotal] = useState([]);
     const [categoryProduct, setCategoryProduct] = useState([]);
-    const [selectedMenu, setSelectedMenu] =  useState([]);
+    const [selectedMenu, setSelectedMenu] = useState([]);
     const [searchBar, setSearchBar] = useState([]);
-    const [isUpdated, setIsUpdated] = useState([Math.random()]);
-    
+    const [isUpdated, setIsUpdated] = useState([Math.random()]); 
+
+    const currentUser = localStorage.getItem('currentuser');
+    const signedInUser = JSON.parse(currentUser);
+    useEffect(() => {
+        if(!signedInUser){
+            console.log("local false")
+        }
+        else{
+            setLoggedInUser(signedInUser)
+            console.log("local true")
+        }
+
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => {
+                setAllProducts(data)
+            })
+    }, [])
+          
+
     return (
         <GroceryContext.Provider value={{ userl: [loggedInUser, setLoggedInUser], update: [isUpdated, setIsUpdated], searchBarStatus: [searchBar, setSearchBar], setstate: [selectedMenu, setSelectedMenu], products: [allProducts, setAllProducts], cartItem: [cart, setCart], payment: [grandTotal, setGrandTotal], category: [categoryProduct, setCategoryProduct] }}>
-            <Router>                
-                <Switch>                                       
+            <Router>
+                <Switch>
                     <PrivateRoute path="/dashboard">
                         <Dashboard />
-                    </PrivateRoute>
+                    </PrivateRoute> 
 
+                    <Route path="/login">
+                        <LoginDashboard />
+                    </Route>
+                    <Route path="/success">
+                        <NavBarDashboard/>
+                        <Success />
+                    </Route>
                     <Route path="/home">
                         <Navbar />
                         <Home />
@@ -44,11 +73,6 @@ function App() {
                         <Home />
                         <Footer />
                     </Route>
-
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                   
                 </Switch>
             </Router>
         </GroceryContext.Provider>

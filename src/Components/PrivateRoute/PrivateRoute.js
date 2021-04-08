@@ -9,8 +9,11 @@ import { GroceryContext } from '../../App';
 const PrivateRoute = ({ children, ...rest }) => {
     const { userl, cartItem } = useContext(GroceryContext);
     const [loggedInUser, setLoggedInUser] = userl;
+    
     const isLoggedIn = () => {
-        const token = sessionStorage.getItem('token');
+
+        // const token = sessionStorage.getItem('token');
+        const token = localStorage.getItem('token');
         if(!token){
           return false;
         }

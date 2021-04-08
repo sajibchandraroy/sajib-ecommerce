@@ -13,7 +13,8 @@ const CustomerOrderList = () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${sessionStorage.getItem('token')}`
+                // authorization: `Bearer ${sessionStorage.getItem('token')}`
+                authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then(res => res.json())

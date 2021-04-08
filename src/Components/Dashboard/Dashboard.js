@@ -12,12 +12,10 @@ import MakeAdmin from '../Admin/Creation/MakeAdmin/MakeAdmin';
 import OrdersList from '../Admin/CustomerOrders/OrdersList';
 import AdminDelete from '../Admin/Delete/Admin/AdminDelete';
 import PriceChangingAndDelete from '../Admin/Delete/ProductsPrice/PriceChangingAndDelete';
-import ProductDetailsForDelete from '../Admin/Delete/ProductsPrice/ProductDetailsForDelete';
 import CustomerOrderList from '../Customer/CustomerOrders/CustomerOrderList';
 import Review from '../Customer/Review/Review';
 import Shop from '../Customer/Shop/Shop';
 import Footer from '../Shared/Footer/Footer';
-import DashboardNavbar from './DashboardNavbar';
 import NavBarDashboard from './NavBarDashboard';
 
 
@@ -57,6 +55,7 @@ const Dashboard = () => {
     }, [location.state])
 
     const signOut = () => {
+        localStorage.clear();
         sessionStorage.clear();
         setLoggedInUser([])
         // handleSignOut()

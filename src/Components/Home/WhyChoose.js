@@ -6,9 +6,9 @@ import Group2 from '../../Images/whyChoose/Group 245.png';
 const WhyChoose = () => {
     return (
         <section className="">
-            <div className="text-center">
+            {/* <div className="text-center">
                 <h2 className="mx-3" style={{ color: 'black'}}>Why you choose us</h2>
-            </div>
+            </div> */}
             <div className="card-group">
                 <div className="card m-2" style={{ height: '90%' }}>
                     <img className="card-img-top" src={Man} alt="Card" style={{ width: '80%', height: '100%' }} />

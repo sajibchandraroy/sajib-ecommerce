@@ -4,37 +4,33 @@ import './Shipment.css';
 import { useContext } from 'react';
 import { GroceryContext } from '../../../App';
 import { getDatabaseCart, processOrder } from '../../../utilities/databaseManager';
-import ProcessPayment from '../ProcessPayment/ProcessPayment';
 
 
-const Shipment = () => {
-    // const { register, handleSubmit, watch, errors } = useForm();
+const ShipmentSslcommerze = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [shippingData, setShippingData] = useState(null);
     const { userl, cartItem, payment } = useContext(GroceryContext);
     const [loggedInUser, setLoggedInUser] = userl;
     const [grandTotal, setGrandTotal] = payment;
     const [cart, setCart] = cartItem;
+    const [sslCommerze, setSslCommerze] = useState(null);
+    const [data, setData] = useState([])  
 
     const onSubmit = data => {
         setShippingData(data);
-    };
-
-    const handlePaymentSuccess = paymentId => {
         const savedCart = getDatabaseCart();
-        console.log(savedCart)
         const orderDetails = {
             ...loggedInUser,
-            products: savedCart,
-            // products: cart,
-            shipment: shippingData,
-            amount: grandTotal,
-            paymentId,
+            products: savedCart,            
+            shipment: data,
+            amount: grandTotal,            
             orderTime: new Date(),
             status: 'Pending'
         };
-        
-        fetch('http://localhost:5000/addOrders', {
+
+        console.log(orderDetails);
+
+        fetch('http://localhost:5000/pay', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,14 +39,16 @@ const Shipment = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data) {
-                    processOrder();
+                processOrder();
+                if (data) {                   
                     alert('your order placed successfully');
+                    // setData(data)
+                    // setSslCommerze(data)
+                    window.location.replace(`${data.redirectGatewayURL}`)
+                    // window.open(`${data.redirectGatewayURL}`, '_blank');
                 }
             })
-    }
-
-    console.log(watch("example")); // watch input value by passing the name of it
+    };
     return (
         <div className="row">
             <div style={{ display: shippingData ? 'none' : 'block' }} className="col-md-6">
@@ -71,11 +69,12 @@ const Shipment = () => {
                 </form>
             </div>
             <div style={{ display: shippingData ? 'block' : 'none' }} className="col-md-6">
-                <h2>Please Pay for me</h2>
-                <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
+                <h2>Please Pay for me</h2>           
+                
             </div>
+            
         </div>
     );
 };
 
-export default Shipment;
+export default ShipmentSslcommerze;

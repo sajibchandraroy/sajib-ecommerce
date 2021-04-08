@@ -7,9 +7,6 @@ import Product from '../Product/Product';
 import './Shop.css';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
-
-
     const { userl, cartItem, category, searchBarStatus, products } = useContext(GroceryContext);
     const [allProducts, setAllProducts] = products;
     const [cart, setCart] = cartItem;
@@ -47,7 +44,7 @@ const Shop = () => {
         //         setProducts(data)
         //         setCategoryProduct(data)
         //     })
-    }, [searchBar])
+    }, [allProducts])
 
     useEffect(() => {
         const getSavedItem = getDatabaseCart();

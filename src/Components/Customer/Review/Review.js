@@ -4,6 +4,7 @@ import { addToDatabaseCart, getDatabaseCart, removeFromDatabaseCart } from '../.
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Shipment from '../Shipment/Shipment';
+import ShipmentSslcommerze from '../Shipment/ShipmentSslcommerze';
 
 const Review = () => {
     const { cartItem, payment } = useContext(GroceryContext);
@@ -87,9 +88,13 @@ const Review = () => {
     return (
         <div className="m-2" >
             { orderPlace ?
-                <Shipment
+                // <Shipment
                 // grandTotal={bill}
-                /> :
+                // /> 
+                <ShipmentSslcommerze/>
+                
+                
+                :
                 <div className="m-2">
                     <div class="row">
                         <div class="col-6 col-md-3">
