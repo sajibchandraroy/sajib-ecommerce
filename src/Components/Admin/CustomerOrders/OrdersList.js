@@ -36,11 +36,9 @@ const OrdersList = ({ isAdmin }) => {
 
     }, [])
     return (
-        <div className="col-12">
+        <div className="">
             <div class="d-flex bd-highlight">
-                <div class="mr-auto bd-highlight"><h2><b>List of Orders</b></h2></div>
-                {/* <div class="p-2 bd-highlight"><img src={loggedInUser.photo} width="50px" height="auto" alt="" /></div>
-                <div class="p-2 bd-highlight"><b>User: {loggedInUser.name}</b></div> */}
+                <div class="mr-auto bd-highlight"><h2><b>List of Orders</b></h2></div>                
             </div>
             <OrdersDataTable orders={orders} setIsUpdated={setIsUpdated} />
         </div>

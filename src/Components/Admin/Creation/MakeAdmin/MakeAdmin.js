@@ -39,21 +39,14 @@ const MakeAdmin = () => {
             })
     }
     return (
-        <div className="col-md-12" style={{ position: "absolute", right: 0 }}>
+        <div className="col-md-12 mb-3">
             <div class="d-flex bd-highlight mb-3">
                 <div class="mr-auto p-2 bd-highlight"><h2><b>Creating a New Admin:</b></h2></div>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} style={containerStyle} ref={currentform} className="card border-success p-5 form-inline">
-                {/* register your input into the hook by invoking the "register" function */}
-                {/* <input defaultValue="test" {...register("example")} /> */}
-
-                {/* include validation with required or other standard HTML validation rules */}
-                <input type="text" class="form-control " {...register("email", { required: true })} placeholder="Admin Email Address"/>
-                {/* errors will return when field validation fails  */}
-                {errors.email && <span>This field is required</span>}
-
-                {/* <input type="submit" /> */}
+            <form onSubmit={handleSubmit(onSubmit)} style={containerStyle} ref={currentform} className="card border-success p-5 form-inline">               
+                <input type="text" class="form-control " {...register("email", { required: true })} placeholder="Admin Email Address"/>                
+                {errors.email && <span>This field is required</span>}                
                 <button type="submit" class="btn btn-primary m-2">Submit</button>
             </form>
 
@@ -61,11 +54,7 @@ const MakeAdmin = () => {
 
 
 
-            {/* <form style={containerStyle} ref={currentform} className="card border-success p-5 form-inline" onSubmit={handleSubmit(onSubmit)}>
-                <label class="sr-only" for="inlineFormInputName2">Email</label>
-                <input type="text" class="form-control " name="email" placeholder="Admin Email Address" />
-                <button type="submit" class="btn btn-primary m-2">Submit</button>
-            </form> */}
+           
         </div>
     );
 };

@@ -18,7 +18,7 @@ const Footer = () => {
                             <div class="col-6">
                                 <h3><b>Office Address:</b></h3>
                                 <small>64/a Israil</small>
-                                <small>Cell: +888263372723</small>
+                                <small>Cell: +888263372723</small><br></br>
                                 <small>Email: zxe@zxe.com</small>
                             </div>
                             <div class="col-6">
@@ -31,7 +31,7 @@ const Footer = () => {
                 </div>
             </div>
             <footer id="contact" className="text-center">
-                <h5><b>Copyright to Omras</b></h5>
+                <h5><b>Copyright to S-Ecommerce</b></h5>
             </footer>
         </section>
 

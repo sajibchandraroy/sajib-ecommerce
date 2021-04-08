@@ -33,8 +33,10 @@ const CustomerOrderList = () => {
     }, [])
     return (
         <div>
-            <h1>Customer Ordered details</h1>
-            <div className="row">
+            <div class="d-flex bd-highlight">
+                <div class="mr-auto bd-highlight"><h2><b>Customer Ordered details</b></h2></div>                
+            </div>           
+            <div>
                 {
                     orders.length > 0 ? <CustomerOrderedShortList orders={orders} allProducts={allProducts} />
                         :

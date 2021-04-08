@@ -3,7 +3,7 @@ import React from 'react';
 const CustomerOrderedShipmentDetails = ({shipping}) => {
     
     return (
-        <div className="col-12">
+        <div>
             {/* <p>{shipping.name}</p>
             <p>{shipping.phone}</p> */}
             <p>{shipping.address}</p>

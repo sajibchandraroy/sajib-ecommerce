@@ -74,7 +74,7 @@ const Dashboard = () => {
             <NavBarDashboard />               
             <main>
                 <div className="row">
-                    <div className="sidebar col-12 col-sm-12 col-md-2 bg-info " style={{ height: "90vh" }}>
+                    <div className="col-12 col-sm-12 col-md-2 bg-info " style={{ height: "90vh" }}>
                         <ul className="list-unstyled">
                             <li className={selectedMenu === 'SHOPPING' ? 'm-3 active' : 'm-3'} onClick={() => setSelectedMenu('SHOPPING')} >
                                 <Link className="text-dark" onClick={() => {setSearchBar(true)}}>
@@ -123,9 +123,8 @@ const Dashboard = () => {
                         <Link to="/" className="text-dark"><FontAwesomeIcon icon={faSignOutAlt} />
                             <span onClick={signOut}>Logout</span>
                         </Link>
-
                     </div>
-                    <div className="col-12 col-sm-12 col-md-10 dashboard-content">                     
+                    <div className="col-12 col-md-10">                     
                         {selectedMenu === 'SHOPPING' && <div><Shop /></div>}
                         {selectedMenu === 'REVIEWORDERS' && <Review />}
                         {selectedMenu === 'ORDERS' && <CustomerOrderList />}

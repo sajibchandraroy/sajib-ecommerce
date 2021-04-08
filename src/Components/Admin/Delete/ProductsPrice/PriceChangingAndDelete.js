@@ -5,22 +5,9 @@ import ProductDetailsForDelete from './ProductDetailsForDelete';
 const PriceChangingAndDelete = () => {
     const { userl, cartItem, payment, products, searchBarStatus, update } = useContext(GroceryContext);
     const [allProducts, setAllProducts] = products;
-    const [isUpdated, setIsUpdated] = update;
+    const [isUpdated, setIsUpdated] = update; 
     
     
-    // const [allProducts, setAllProducts] = useState([]);
-    // const [isUpdated, setIsUpdated] = useState([Math.random()]);
-
-    // useEffect(() => {
-    //     fetch('https://guarded-bastion-31565.herokuapp.com/products')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setAllProducts(data)
-    //         })
-    // }, [isUpdated])
-    // console.log(isUpdated)
-
-    console.log(allProducts)
     const handleDelete = (product, e) => {
         const id = product._id
         fetch(`https://guarded-bastion-31565.herokuapp.com/deleteproduct/${id}`, {
@@ -37,9 +24,8 @@ const PriceChangingAndDelete = () => {
     }
 
     return (
-        <div class="">
+        <div>
             <h2><b>Changing Product Price from DataBase:</b></h2>
-
             <div className="row">
                 {
                     allProducts.length > 0 ?                    

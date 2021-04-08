@@ -1,17 +1,19 @@
 import { faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { GroceryContext } from '../../App';
 import image from '../../Images/customer/1.jpg'
 import WhyChoose from './WhyChoose';
 
-
-
 const Home = () => {
     const { userl, cartItem, category, searchBarStatus, products } = useContext(GroceryContext);
     const [allProducts, setAllProducts] = products;
-    console.log(allProducts)
+    const [categoryProduct, setCategoryProduct] = category;
+    
+    useEffect(() => {
+        setCategoryProduct(allProducts)        
+    }, [allProducts])
 
     let names = []
     allProducts.map(item => {
@@ -33,6 +35,11 @@ const Home = () => {
 
     var uniqueNames = getUnique(names);
 
+    const categorisedProduct = (product) => {       
+        const selectedProduct = allProducts.filter(item => item.category === product);
+        setCategoryProduct(selectedProduct)
+    }
+
 
     return (
         <div className="container-fluid">
@@ -45,14 +52,14 @@ const Home = () => {
                             </button>
                             <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenu2">
                                 {uniqueNames.map(item => <button class="dropdown-item" type="button"
-                                // onClick={() => { categorisedProduct(item) }}
+                                onClick={() => { categorisedProduct(item) }}
                                 >{item}</button>)}
                             </div>
                         </div>
                     </div>
                     <div className="col-12 col-md-9 mt-2">
                         <div className="d-flex flex-wrap">
-                            {allProducts.map(item =>
+                            {categoryProduct.map(item =>
                                 <div className="col-12 col-md-3" >
                                     <div className="card border-info mb-3" >
                                         <div className="card-header text-center">
@@ -69,19 +76,7 @@ const Home = () => {
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    {/* <div class="col">
-                        <WhyChoose/>                        
-                    </div>
-                    <div class="col" style={{ fontWeight: "bold" }}>
-                        <img src={image} alt="" style={{ width: '60%', height: 'auto', borderRadius: '70%'}}/>
-                        <ul>
-                            <li>Available of products: 9000 items</li>
-                            <li>Available orders: 100</li>
-                        </ul>
-
-                    </div> */}
+                    </div>                    
                 </div>
             </div>
             <div className="text-center m-4 bg-light">

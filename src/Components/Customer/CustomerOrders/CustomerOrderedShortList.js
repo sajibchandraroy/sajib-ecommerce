@@ -4,18 +4,14 @@ import CustomerOrderedShipmentDetails from './CustomerOrderedShipmentDetails';
 
 const CustomerOrderedShortList = ({ orders, allProducts}) => {   
     return (
-        <div>
-            <div>
-                <table class="table"
-                // className="table table-borderless"
-                >
-                    <thead class="thead-dark"
-                    // style={{ backgroundColor: '#dfe6e9', color: '#636e72' }}
-                    >
+        
+            <div className="table-responsive">
+                <table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
                         <tr>
                             <th className="" scope="col">Sr No</th>                            
-                            <th className="" scope="col">Amount($)</th>
-                            <th className="" scope="col">Payment_ID</th>
+                            <th className="" scope="col" style={{width: "6rem"}}>Amount($)</th>
+                            <th className="" scope="col" style={{width: "6rem"}}>Payment_ID</th>
                             <th className="" scope="col">Product Details</th>
                             <th className="" scope="col">Shipment Details</th>
                             <th className="" scope="col">Status</th>
@@ -37,9 +33,7 @@ const CustomerOrderedShortList = ({ orders, allProducts}) => {
                         } 
                     </tbody>
                 </table>
-            </div>
-
-        </div>
+            </div>        
     );
 };
 

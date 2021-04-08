@@ -33,18 +33,11 @@ const OrdersDataTable = (props) => {
 
 
     return (
-
-        <div>
-            <table class="table"
-            // className="table table-borderless"
-            >
-                <thead class="thead-dark"
-                // style={{ backgroundColor: '#dfe6e9', color: '#636e72' }}
-                >
+        <div className="table-responsive">
+            <table className="table table-bordered">
+                <thead className="thead-dark">
                     <tr>
-                        <th className="" scope="col">Sr No</th>
-                        {/* <th className="" scope="col">Name</th> */}
-                        {/* <th className="" scope="col">Email ID</th> */}
+                        <th className="" scope="col">Sr No</th>                        
                         <th className="" scope="col">Amount($)</th>
                         <th className="" scope="col">Payment_ID</th>
                         <th className="" scope="col">Product Details</th>
@@ -57,9 +50,7 @@ const OrdersDataTable = (props) => {
                     {
                         orders.map((order, index) =>
                             <tr>
-                                <td>{index + 1}</td>
-                                {/* <td>{order.name}</td> */}
-                                {/* <td>{order.email}</td> */}
+                                <td>{index + 1}</td>                                
                                 <td>$ {order.amount}</td>
                                 <td><small>{order.paymentId}</small></td>
                                 <td>{<ProductDetails product={order.products} />}</td>
@@ -76,12 +67,9 @@ const OrdersDataTable = (props) => {
                                     </select>
                                 </td>
                             </tr>
-                        )
-                    }
+                        )}
                 </tbody>
             </table>
-
-
         </div>
 
 
