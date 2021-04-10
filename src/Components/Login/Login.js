@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-
 import { handleForgetPassword, handleGoogleSignIn, signInWithEmailAndPassword } from './LoginManager';
 import googleimage from "../../Images/Login/google-icon.png";
-import fbimage from "../../Images/Login/fb.png";
 import './Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 
 const Login = (props) => {
-    const [forgetPassword, setForgetPassword] = useState(false);   
+    const [forgetPassword, setForgetPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const handleBlur = (e) => {
         let isFieldValid = true;
@@ -46,9 +48,6 @@ const Login = (props) => {
                 props.handleResponse(res, true);
             })
     }
-
-    
-
     return (
         <div>
             <div class="login-form">
@@ -61,7 +60,9 @@ const Login = (props) => {
                         {!forgetPassword &&
                             <div class="col-md-6">
                                 <label>Password</label>
-                                <input class="form-control" type="text" name="password" placeholder="Password" onBlur={handleBlur} />
+                                <div class="input-group">                                    
+                                    <input class="form-control" type={!showPassword ? "password" : "text"} name="password" placeholder="Password" onBlur={handleBlur} /><div class="input-group-text"><span onClick={() => setShowPassword(!showPassword)}><FontAwesomeIcon icon={!showPassword ? faEyeSlash : faEye} /></span></div>
+                                </div>                             
                             </div>}
                         <div class="col-md-12">
                             <div class="custom-control custom-checkbox">
@@ -79,5 +80,4 @@ const Login = (props) => {
         </div>
     );
 };
-
 export default Login;

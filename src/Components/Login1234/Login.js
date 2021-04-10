@@ -11,7 +11,7 @@ import { initializeLoginFramework, handleGoogleSignIn, handleSignOut, handleFbSi
 // import LoginBg from '../../Images/Login/background.png';
 import googleimage from "../../Images/Login/google-icon.png";
 import fbimage from "../../Images/Login/fb.png";
-import './Login.css';
+// import './Login.css';
 
 
 const Login = () => {

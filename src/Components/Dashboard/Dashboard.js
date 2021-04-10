@@ -28,16 +28,17 @@ const Dashboard = () => {
     const [searchBar, setSearchBar] = searchBarStatus;
     const [allProducts, setAllProducts] = products;
     const [isUpdated, setIsUpdated] = update;
-
     const [isAdmin, setIsAdmin] = useState([]);
 
-    useEffect(() => {
-        fetch('https://guarded-bastion-31565.herokuapp.com/products')
-            .then(res => res.json())
-            .then(data => {
-                setAllProducts(data)
-            })
-    }, [isUpdated]);
+    console.log(selectedMenu)
+
+    // useEffect(() => {
+    //     fetch('https://guarded-bastion-31565.herokuapp.com/products')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAllProducts(data)
+    //         })
+    // }, []);
     
 
     useEffect(() => {
@@ -64,9 +65,7 @@ const Dashboard = () => {
         //         setLoggedInUser(res);                
                 history.push('/')
             // })
-    }
-
-    console.log(isAdmin)
+    }    
     return (
         
         

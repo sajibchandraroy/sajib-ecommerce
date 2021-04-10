@@ -37,8 +37,7 @@ const NavBarDashboard = () => {
 
     let history = useHistory();
 
-    const handleLogout = () => {
-        
+    const handleLogout = () => {        
                 localStorage.clear();
                 sessionStorage.clear(); 
                 setLoggedInUser([])               
