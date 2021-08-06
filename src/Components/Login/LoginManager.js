@@ -95,6 +95,7 @@ export const createUserWithEmailAndPassword = (firstName, lastName, email, passw
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
     .then(res => {
+      console.log(res)
       const {displayName, photoURL, email} = res.user;
       const signedInUser = {
         isSignedIn: true,
@@ -114,7 +115,7 @@ export const createUserWithEmailAndPassword = (firstName, lastName, email, passw
 
   const setUserToken = () => {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-      localStorage.setItem('token', idToken);
+      sessionStorage.setItem('token', idToken);
     }).catch(function(error) {
       // Handle error
     });

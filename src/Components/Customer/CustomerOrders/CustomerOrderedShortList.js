@@ -2,9 +2,8 @@ import React from 'react';
 import CustomerOrderedProductsDetails from './CustomerOrderedProductsDetails';
 import CustomerOrderedShipmentDetails from './CustomerOrderedShipmentDetails';
 
-const CustomerOrderedShortList = ({ orders, allProducts}) => {   
-    return (
-        
+const CustomerOrderedShortList = ({ orders}) => {     
+    return (        
             <div className="table-responsive">
                 <table class="table table-bordered table-sm">
                     <thead class="thead-dark">
@@ -25,7 +24,7 @@ const CustomerOrderedShortList = ({ orders, allProducts}) => {
                                     <td>{index + 1}</td>                                    
                                     <td>$ {order.amount}</td>
                                     <td>{order.paymentId}</td>
-                                    <td>{<CustomerOrderedProductsDetails product={order.products} allProducts={allProducts}/>}</td>
+                                    <td>{<CustomerOrderedProductsDetails product={order.products}/>}</td>
                                     <td>{<CustomerOrderedShipmentDetails shipping={order.shipment} />}</td>
                                     <td >{order.status}</td>
                                 </tr>

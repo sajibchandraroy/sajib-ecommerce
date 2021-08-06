@@ -1,26 +1,22 @@
 import React, { useContext } from 'react';
+import { GroceryContext } from '../../../App';
 
-const CustomerOrderedProductsDetails = ({product, allProducts}) => {
-    // const { userl, cartItem, payment, products } = useContext(GroceryContext); 
-    // const [allProducts, setAllProducts] = products; 
-    // console.log(allProducts)   
+const CustomerOrderedProductsDetails = ({ product }) => {
+    const { products } = useContext(GroceryContext);
+    const [allProducts, setAllProducts] = products;
     const productKeys = Object.keys(product);
-    const productQuantity = Object.values(product)   
+    const productQuantity = Object.values(product)
 
-     const listItems =  productKeys.map((number) => {      
-        const x = number
-        const y = product[number]
-        const orderedProduct = allProducts.find(item => item.key === x);
-        // console.log(orderedProduct)
-        const orderedProductName = orderedProduct.name
-        // console.log(orderedProductName)
-        return <li><b>Product Name:{orderedProductName},</b>  <span className="text-danger" >Quantity: {y}</span></li>
-    }); 
-    
+    const listItems = productKeys.map((key) => {
+        const quantity = product[key];
+        const orderedProduct = allProducts.find(item => item.key === key);
+        const orderedProductName = orderedProduct.name;
+        return <li><b>Product Name:{orderedProductName},</b>  <span className="text-danger" >Quantity: {quantity}</span></li>
+    });
+
     return (
         <div>
             {listItems}
-
         </div>
     );
 };

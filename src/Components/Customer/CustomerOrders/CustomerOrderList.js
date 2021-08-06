@@ -7,7 +7,7 @@ const CustomerOrderList = () => {
     const { userl, cartItem, payment, products } = useContext(GroceryContext);
     const [loggedInUser, setLoggedInUser] = userl;
     const [allProducts, setAllProducts] = products;
-
+    
     useEffect(() => {
         fetch('https://guarded-bastion-31565.herokuapp.com/customerOrders?email=' + loggedInUser.email, {
             method: 'GET',
@@ -21,16 +21,7 @@ const CustomerOrderList = () => {
             .then(data => {
                 setOrders(data)
             });
-    }, [])
-
-    useEffect(() => {
-        fetch('https://guarded-bastion-31565.herokuapp.com/products')
-            .then(res => res.json())
-            .then(data => {
-                setAllProducts(data)
-            })
-
-    }, [])
+    }, [])    
     return (
         <div>
             <div class="d-flex bd-highlight">
@@ -38,7 +29,7 @@ const CustomerOrderList = () => {
             </div>           
             <div>
                 {
-                    orders.length > 0 ? <CustomerOrderedShortList orders={orders} allProducts={allProducts} />
+                    orders.length > 0 ? <CustomerOrderedShortList orders={orders} />
                         :
                         <div className="p-5">
                             <h4 className="lead text-center">No orders found. Order now!</h4>

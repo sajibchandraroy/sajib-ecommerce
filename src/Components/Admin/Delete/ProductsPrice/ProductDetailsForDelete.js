@@ -1,31 +1,18 @@
 import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useRef, useState } from 'react';
+import React, { useRef} from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 
 
 const ProductDetailsForDelete = (props) => {
-    const { name, image, price, key, _id } = props.product;
-    // const { handleSubmit, register, errors } = useForm();
+    const { name, image, price, key, _id } = props.product;    
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const currentform = useRef(null);
 
-    const [info, setInfo] = useState({});
-
-    const handleBlur = (id, e) => {
-        const newInfo = { ...info };
-        newInfo[e.target.name] = e.target.value;
-        newInfo['id'] = id;
-        setInfo(newInfo);
-    }
-
-    console.log(info)
-
-    const onSubmit = () => {        
-        const id = info.id
-        const newPrice = info.price
-        const updatedData = { id, newPrice };        
+    const onSubmit = (pdID, data) => {             
+        const id = pdID
+        const newPrice = data.price
+        const updatedData = { id, newPrice };                
 
         fetch(`https://guarded-bastion-31565.herokuapp.com/update/${id}`, {
             method: 'PATCH',
@@ -33,20 +20,14 @@ const ProductDetailsForDelete = (props) => {
             body: JSON.stringify(updatedData)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data) {
-                    // setIsUpdated(true)
-                    setInfo([])
+            .then(data => {                
+                if (data) {                                       
                     currentform.current.reset();
                     props.setIsUpdated(Math.random())
                     alert('Status Updated Successfully')
                 }
             })
     } 
-
-
-
     return (
         
         <tr>
@@ -59,10 +40,9 @@ const ProductDetailsForDelete = (props) => {
             <td><img src={`data:image/png;base64,${image.img}`} class="card-img-top" style={{ width: '45px', height: '50px' }} alt="..." /></td>
             <td>${price}</td>
             <td>
-                <form onSubmit={handleSubmit(onSubmit)} ref={currentform}>
+                <form onSubmit={handleSubmit((e) => onSubmit(_id, e))} ref={currentform}>
                     <label><b>New Product Price</b></label>
-                    <input onBlur={(e) => handleBlur(_id, e)} type="text" className="form-control"  placeholder="Editing price" {...register("price", { required: true })} />
-                    
+                    <input type="text" className="form-control"  placeholder="Editing price" {...register("price", { required: true })} />
                     {errors.price && <span>This field is required</span>}
                     <button type="submit" class="btn btn-primary m-2">Submit</button>
                 </form>

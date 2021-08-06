@@ -19,7 +19,7 @@ const Shop = () => {
     let names = []
     allProducts.map(item => {
         const productsCategory = item.category
-        names.push(productsCategory)                
+        return names.push(productsCategory)                
     })
     
     function getUnique(array){
@@ -37,13 +37,7 @@ const Shop = () => {
     var uniqueNames = getUnique(names);    
 
     useEffect(() => {
-        setCategoryProduct(allProducts)
-        // fetch('https://guarded-bastion-31565.herokuapp.com/products')
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setProducts(data)
-        //         setCategoryProduct(data)
-        //     })
+        setCategoryProduct(allProducts)       
     }, [allProducts])
 
     useEffect(() => {

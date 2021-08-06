@@ -24,29 +24,27 @@ function App() {
     const [allProducts, setAllProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [grandTotal, setGrandTotal] = useState([]);
-    const [categoryProduct, setCategoryProduct] = useState([]);
+    const [categoryProduct, setCategoryProduct] = useState(allProducts);
     const [selectedMenu, setSelectedMenu] = useState([]);
     const [searchBar, setSearchBar] = useState([]);
-    const [isUpdated, setIsUpdated] = useState([Math.random()]); 
-
+    const [isUpdated, setIsUpdated] = useState([Math.random()]);
     const currentUser = localStorage.getItem('currentuser');
     const signedInUser = JSON.parse(currentUser);
-    useEffect(() => {
-        if(!signedInUser){
-            console.log("local false")
+    useEffect(() => { 
+        if(!signedInUser){            
         }
         else{
-            setLoggedInUser(signedInUser)
-            console.log("local true")
+            setLoggedInUser(signedInUser)            
         }
-
-        fetch('https://guarded-bastion-31565.herokuapp.com/products')
-            .then(res => res.json())
-            .then(data => {
-                setAllProducts(data)
-            })
     }, [])
-          
+    
+    useEffect(() => {
+        fetch('https://guarded-bastion-31565.herokuapp.com/products')
+        .then(res => res.json())
+        .then(data => {
+            setAllProducts(data)
+        })
+    }, [isUpdated])
 
     return (
         <GroceryContext.Provider value={{ userl: [loggedInUser, setLoggedInUser], update: [isUpdated, setIsUpdated], searchBarStatus: [searchBar, setSearchBar], setstate: [selectedMenu, setSelectedMenu], products: [allProducts, setAllProducts], cartItem: [cart, setCart], payment: [grandTotal, setGrandTotal], category: [categoryProduct, setCategoryProduct] }}>
@@ -54,13 +52,13 @@ function App() {
                 <Switch>
                     <PrivateRoute path="/dashboard">
                         <Dashboard />
-                    </PrivateRoute> 
+                    </PrivateRoute>
 
                     <Route path="/login">
                         <LoginDashboard />
                     </Route>
                     <Route path="/success">
-                        <NavBarDashboard/>
+                        <NavBarDashboard />
                         <Success />
                     </Route>
                     <Route path="/home">

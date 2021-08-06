@@ -28,7 +28,7 @@ const LoginDashboard = () => {
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLoggedInUser(res);
-        localStorage.setItem('currentuser', JSON.stringify(res));
+        sessionStorage.setItem('currentuser', JSON.stringify(res));
         if (redirect) {
             history.replace(from);
         }

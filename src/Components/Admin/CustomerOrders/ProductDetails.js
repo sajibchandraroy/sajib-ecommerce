@@ -4,42 +4,33 @@ import { GroceryContext } from '../../../App';
 const ProductDetails = ({ product }) => {
     const { userl, cartItem, payment, products } = useContext(GroceryContext);
     const [allProducts, setAllProducts] = products;
-    const productKeys = Object.keys(product);
-    const productQuantity = Object.values(product)
+    const productKeys = Object.keys(product); 
 
-    const listItems = productKeys.map((number) => {
-        const x = number
-        const y = product[number]
-        const orderedProduct = allProducts.find(item => item.key === x);
-        // console.log(orderedProduct)
-        const orderedProductName = orderedProduct.name
-        // console.log(orderedProductName)
+    const listItems = productKeys.map(async (number) => {
+        const productKey = number
+        const productQuantity = product[number]
+        const productList = await allProducts;
+        const orderedProduct = await productList.find(item => item.key === productKey);        
+        const orderedProductName = await orderedProduct.name
+        
         return (
             <div className="col-12">
-                <ul><small>
+                {/* <ul><small>
                     <li>
                         <b>Product Name:  </b>{orderedProductName}
                         <ul>
-                            <li><b>Quantity:  </b><span className="text-danger" >{y}</span></li>
+                            <li><b>Quantity:  </b><span className="text-danger" >{productQuantity}</span></li>
                         </ul>
                     </li></small>
-                </ul>
-
-
-                {/* <li>
-                    <b>Product Name:</b>{orderedProductName},
-                <b>Quantity:</b>  <span className="text-danger" >{y}</span>
-                </li> */}
-
-
-
+                </ul> */}                
             </div>
         )
     });
 
     return (
         <div>
-            {listItems}
+            {/* {listItems} */}
+            test 
         </div>
     );
 };

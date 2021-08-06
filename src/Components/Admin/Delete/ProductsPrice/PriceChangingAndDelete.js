@@ -7,6 +7,8 @@ const PriceChangingAndDelete = () => {
     const [allProducts, setAllProducts] = products;
     const [isUpdated, setIsUpdated] = update; 
     
+    // useEffect(() => {        
+    // }, [isUpdated]) 
     
     const handleDelete = (product, e) => {
         const id = product._id
@@ -14,10 +16,8 @@ const PriceChangingAndDelete = () => {
             method: 'DELETE',
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data) {
-                    console.log(data)
+            .then(data => {                
+                if (data) {                    
                     e.target.parentNode.style.display = 'none';
                 }
             })
